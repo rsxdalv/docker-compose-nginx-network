@@ -4,18 +4,18 @@ services:
     reverseproxy:
         image: reverseproxy
         ports:
-            - 8080:8080
-            - 8081:8081
+            - 80:80
+            - 443:443
         restart: always
 
-    nginx:
+    myoublawness:
         depends_on:
             - reverseproxy
-        image: nginx:alpine
+        image: myoublawness:latest
         restart: always
 
-    apache:
+    myoublawness_beta:
         depends_on:
             - reverseproxy
-        image: httpd:alpine
+        image: myoublawness:beta
         restart: always

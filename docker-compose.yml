@@ -3,7 +3,9 @@ version: '2'
 services:
     # Central nginx proxy
     reverseproxy:
-        image: reverseproxy
+        build:
+            context: .
+            dockerfile: Dockerfile.nginx
         ports:
             - 80:80
             - 443:443

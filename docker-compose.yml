@@ -33,7 +33,6 @@ services:
         container_name: phpmyadmin
         environment:
             - PMA_HOST=mysql
-            # - PMA_ARBITRARY=1
         restart: always
         volumes:
             - /sessions

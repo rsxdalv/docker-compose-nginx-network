@@ -1,6 +1,7 @@
 version: '2'
 
 services:
+    # Central nginx proxy
     reverseproxy:
         image: reverseproxy
         ports:
@@ -8,6 +9,7 @@ services:
             - 443:443
         restart: always
 
+    # My oublawness
     myoublawness:
         depends_on:
             - reverseproxy
@@ -19,3 +21,21 @@ services:
             - reverseproxy
         image: myoublawness:beta
         restart: always
+    
+    # Katrina's part
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=df52e715326891f20d4c85e946ce9108cf66228ca31a92e9
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        environment:
+            - PMA_HOST=mysql
+            # - PMA_ARBITRARY=1
+        restart: always
+        volumes:
+            - /sessions
+        depends_on:
+            - mysql

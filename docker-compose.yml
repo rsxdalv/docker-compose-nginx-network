@@ -32,7 +32,7 @@ services:
         environment:
             - MYSQL_ROOT_PASSWORD=df52e715326891f20d4c85e946ce9108cf66228ca31a92e9
         volumes:
-            - /var/lib/mysql
+            - /var/lib/mysql:/var/lib/mysql
         restart: always
 
     phpmyadmin:

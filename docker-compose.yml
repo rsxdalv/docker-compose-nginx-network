@@ -29,12 +29,16 @@ services:
         image: mysql:latest
         environment:
             - MYSQL_ROOT_PASSWORD=df52e715326891f20d4c85e946ce9108cf66228ca31a92e9
+        volumes:
+            - /var/lib/mysql
+        restart: always
+
     phpmyadmin:
+        depends_on:
+            - reverseproxy
         image: phpmyadmin/phpmyadmin
         environment:
             - PMA_HOST=mysql
-        restart: always
         volumes:
             - /sessions
-        depends_on:
-            - mysql
+        restart: always

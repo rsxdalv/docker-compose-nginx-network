@@ -23,24 +23,3 @@ services:
             - reverseproxy
         image: myoublawness:beta
         restart: always
-    
-    # Katrina's part
-    mysql:
-        build:
-            context: .
-            dockerfile: Dockerfile.mysql
-        environment:
-            - MYSQL_ROOT_PASSWORD=df52e715326891f20d4c85e946ce9108cf66228ca31a92e9
-        volumes:
-            - /var/lib/mysql:/var/lib/mysql
-        restart: always
-
-    phpmyadmin:
-        depends_on:
-            - reverseproxy
-        image: phpmyadmin/phpmyadmin
-        environment:
-            - PMA_HOST=mysql
-        volumes:
-            - /sessions
-        restart: always

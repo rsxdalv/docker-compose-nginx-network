@@ -1,4 +1,0 @@
-FROM mysql:latest
-
-# Rename on copy
-COPY low-res.conf /etc/mysql/conf.d/low-res.cnf
